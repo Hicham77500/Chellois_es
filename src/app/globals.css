@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-red: #EE131B;
+  --primary-purple: #7116C2;
+  --dark-gray: #272627;
+  --light-bg: #f6eeec;
+  --text-gray: #848992;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 15%;
+  --primary: 0 0% 15%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 15%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 15%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 0% 15%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-red);
+  border-radius: 4px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-[#EE131B] text-white px-6 py-3 font-semibold transition-all duration-300 rounded-full shadow-lg shadow-red-500/20;
+}
+
+.btn-primary:hover {
+  @apply bg-[#c91018] shadow-xl shadow-red-500/30 -translate-y-0.5;
+}
+
+.btn-outline {
+  @apply border border-white/40 text-white px-6 py-3 font-semibold rounded-full transition-all duration-300;
+}
+
+.btn-outline:hover {
+  @apply border-white/80 bg-white/10 -translate-y-0.5;
+}
+
+/* Hero text shadow */
+.hero-text {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation link hover effect */
+.nav-link {
+  @apply relative text-white/90 font-medium transition-all duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link.active::after {
+  @apply w-full;
+}
+
+/* Modern section helpers */
+.section-padding {
+  @apply py-16 md:py-20;
+}
+
+.section-light {
+  @apply bg-white;
+}
+
+.section-muted {
+  @apply bg-campaign-light;
+}
+
+.section-dark {
+  @apply bg-campaign-dark;
+}
+
+.card {
+  @apply rounded-2xl shadow-xl shadow-black/5 border border-black/5 bg-white;
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl;
+}
