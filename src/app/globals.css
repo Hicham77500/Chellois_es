@@ -97,7 +97,7 @@ html {
 }
 
 .nav-link.active::after {
-  @apply w-full;
+  @apply w-0;
 }
 
 /* Modern section helpers */

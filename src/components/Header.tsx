@@ -39,7 +39,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link ${link.active ? "active" : ""} ${link.label === "Actions" ? "btn-outline text-white/95 px-4 py-2" : ""}`}
+                className={`nav-link ${link.active ? "active btn-outline text-white/95 px-4 py-2" : ""}`}
               >
                 {link.label}
               </Link>

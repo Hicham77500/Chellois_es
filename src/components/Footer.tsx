@@ -32,9 +32,10 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-campaign-dark py-12 border-t border-white/10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+    <footer className="bg-campaign-dark py-12 border-t border-white/10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.05),_transparent_45%)]" />
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
           {/* Social Links */}
           <div>
             <h3 className="text-white font-semibold text-sm mb-4">
@@ -58,19 +59,48 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="text-center">
-            <h3 className="text-white font-bold text-sm mb-2">Courriel</h3>
-            <Link
-              href="mailto:contact@chellois-es2026.fr"
-              className="text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              contact@chellois-es2026.fr
-            </Link>
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-xl">
+              <h3 className="text-white font-bold text-sm mb-2">Courriel</h3>
+              <Link
+                href="mailto:contact@chellois-es2026.fr"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                contact@chellois-es2026.fr
+              </Link>
+              <div className="mt-4">
+                <p className="text-white font-semibold text-sm">
+                  Guendouz Hicham
+                </p>
+                <p className="text-gray-400 text-xs mt-1">
+                  Développeur du site · gestion & évolutions
+                </p>
+                <p className="text-gray-500 text-xs mt-2">
+                  Pour toute autre demande ne concernant pas le site, veuillez utiliser le courriel.
+                </p>
+                <div className="mt-3 flex items-center justify-center gap-2">
+                  <Link
+                    href="https://www.linkedin.com/in/hicham-g-578759125/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-white/80 hover:text-white transition-colors duration-300 border border-white/20 rounded-full px-3 py-1 hover:border-white/50"
+                  >
+                    LinkedIn
+                  </Link>
+                  <Link
+                    href="mailto:hichamGu@outlook.fr"
+                    className="inline-flex items-center text-sm text-white/80 hover:text-white transition-colors duration-300 border border-white/20 rounded-full px-3 py-1 hover:border-white/50"
+                  >
+                    Mail
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Copyright */}
           <div className="text-right md:text-right">
             <p className="text-gray-500 text-sm">
-              © 2025{" "}
+              © 2026{" "}
               <Link
                 href="/"
                 className="hover:text-white transition-colors duration-300"
