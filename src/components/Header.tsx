@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/", label: "Accueil", active: true },
+  { href: "/", label: "Accueil" },
   { href: "/le-programme", label: "Le programme" },
   { href: "/chelloises", label: "Chellois·es" },
   { href: "/actions", label: "Actions" },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-campaign-dark/60 backdrop-blur-md border-b border-white/10">
@@ -35,15 +37,18 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`nav-link ${link.active ? "active btn-outline text-white/95 px-4 py-2" : ""}`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`nav-link ${isActive ? "active btn-outline text-white/95 px-4 py-2" : ""}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -71,16 +76,19 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4">
             <div className="flex flex-col gap-3 bg-campaign-dark/95 rounded-2xl p-4 border border-white/10 shadow-xl">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-white font-medium rounded-lg px-3 py-2 hover:bg-white/10 transition-colors ${link.active ? "text-campaign-red" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-white font-medium rounded-lg px-3 py-2 hover:bg-white/10 transition-colors ${isActive ? "text-campaign-red" : ""}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           </nav>
         )}

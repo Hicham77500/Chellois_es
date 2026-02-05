@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primary-red: #EE131B;
-  --primary-purple: #7116C2;
-  --dark-gray: #272627;
-  --light-bg: #f6eeec;
-  --text-gray: #848992;
+  --primary-red: #E51E3E;
+  --primary-purple: #6E1FCB;
+  --primary-pink: #EC4F9D;
+  --dark-gray: #261933;
+  --light-bg: #F7EEF7;
+  --text-gray: #6F6B78;
 
   --background: 0 0% 100%;
   --foreground: 0 0% 15%;
@@ -62,11 +63,11 @@ html {
 
 /* Custom button styles */
 .btn-primary {
-  @apply bg-[#EE131B] text-white px-6 py-3 font-semibold transition-all duration-300 rounded-full shadow-lg shadow-red-500/20;
+  @apply bg-campaign-red text-white px-6 py-3 font-semibold transition-all duration-300 rounded-full shadow-lg shadow-red-500/20;
 }
 
 .btn-primary:hover {
-  @apply bg-[#c91018] shadow-xl shadow-red-500/30 -translate-y-0.5;
+  @apply bg-campaign-red-dark shadow-xl shadow-red-500/30 -translate-y-0.5;
 }
 
 .btn-outline {

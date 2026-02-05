@@ -12,7 +12,7 @@ const videos = [
 export default function VideoSection() {
   return (
     <section className="section-padding section-dark relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(238,19,27,0.15),_transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,30,62,0.18),_transparent_45%)]" />
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Featured Video */}
         <div className="max-w-4xl mx-auto mb-8">

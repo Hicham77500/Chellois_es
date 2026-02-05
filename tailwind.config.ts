@@ -10,11 +10,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'campaign-red': '#EE131B',
-        'campaign-purple': '#7116C2',
-        'campaign-dark': '#272627',
-        'campaign-light': '#f6eeec',
-        'campaign-gray': '#848992',
+        'campaign-red': '#E51E3E',
+        'campaign-red-dark': '#C81834',
+        'campaign-purple': '#6E1FCB',
+        'campaign-pink': '#EC4F9D',
+        'campaign-dark': '#261933',
+        'campaign-light': '#F7EEF7',
+        'campaign-gray': '#6F6B78',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -26,11 +28,11 @@ const config: Config = {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "#EE131B",
+          DEFAULT: "#E51E3E",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#7116C2",
+          DEFAULT: "#6E1FCB",
           foreground: "#ffffff",
         },
         muted: {

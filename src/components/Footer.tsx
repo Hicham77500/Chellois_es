@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 const socialLinks = [
@@ -31,6 +34,19 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const copyToClipboard = async (value: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setToastMessage(`${label} copié`);
+      window.setTimeout(() => setToastMessage(null), 1800);
+    } catch {
+      setToastMessage("Impossible de copier");
+      window.setTimeout(() => setToastMessage(null), 1800);
+    }
+  };
+
   return (
     <footer className="bg-campaign-dark py-12 border-t border-white/10 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.05),_transparent_45%)]" />
@@ -61,12 +77,17 @@ export default function Footer() {
           <div className="text-center">
             <div className="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-xl">
               <h3 className="text-white font-bold text-sm mb-2">Courriel</h3>
-              <Link
-                href="mailto:contact@chellois-es2026.fr"
-                className="text-gray-400 hover:text-white transition-colors duration-300"
-              >
-                contact@chellois-es2026.fr
-              </Link>
+              <div className="mt-1 flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() =>
+                    copyToClipboard("contact@chellois-es2026.fr", "Courriel")
+                  }
+                  className="inline-flex items-center text-sm text-white/80 hover:text-white transition-colors duration-300 border border-white/20 rounded-full px-3 py-1 hover:border-white/50"
+                >
+                  contact@chellois-es2026.fr
+                </button>
+              </div>
               <div className="mt-4">
                 <p className="text-white font-semibold text-sm">
                   Guendouz Hicham
@@ -86,12 +107,15 @@ export default function Footer() {
                   >
                     LinkedIn
                   </Link>
-                  <Link
-                    href="mailto:hichamGu@outlook.fr"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      copyToClipboard("hichamGu@outlook.fr", "Mail")
+                    }
                     className="inline-flex items-center text-sm text-white/80 hover:text-white transition-colors duration-300 border border-white/20 rounded-full px-3 py-1 hover:border-white/50"
                   >
                     Mail
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -111,6 +135,15 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      {toastMessage && (
+        <div
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 text-campaign-dark text-sm px-4 py-2 rounded-full shadow-lg border border-white/30"
+          role="status"
+          aria-live="polite"
+        >
+          {toastMessage}
+        </div>
+      )}
     </footer>
   );
 }
