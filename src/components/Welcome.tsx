@@ -1,12 +1,67 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+
+type WelcomeElement = "text" | "image";
 
 export default function Welcome() {
+  const [visibleElements, setVisibleElements] = useState<Set<WelcomeElement>>(
+    new Set()
+  );
+  const elementRef = useRef<Map<WelcomeElement, HTMLElement>>(new Map());
+
+  useEffect(() => {
+    // Use a single observer on the section to check visibility
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Stagger the appearance of elements
+            const delays = { text: 0, image: 100 };
+            (Object.keys(delays) as WelcomeElement[]).forEach((key) => {
+              setTimeout(() => {
+                setVisibleElements((prev) => new Set([...prev, key]));
+              }, delays[key]);
+            });
+            // Unobserve after intersection to avoid re-triggering
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "100px 0px 0px 0px",
+      }
+    );
+
+    // Observe the main welcome section
+    const welcomeSection = document.querySelector(
+      '[data-component-id="welcome"]'
+    );
+    if (welcomeSection) {
+      observer.observe(welcomeSection);
+    }
+
+    return () => {
+      if (welcomeSection) {
+        observer.unobserve(welcomeSection);
+      }
+    };
+  }, []);
+
   return (
-    <section className="section-padding section-muted">
+    <section className="section-padding section-muted" data-component-id="welcome">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Welcome Text */}
-          <div className="max-w-xl">
+          <div
+            className={`max-w-xl transition-all duration-500 ease-out ${
+              visibleElements.has("text")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+            }`}
+          >
             <p className="text-campaign-purple font-semibold text-lg mb-4">
               Bienvenue sur le site de la liste Chellois·es !
             </p>
@@ -20,7 +75,13 @@ export default function Welcome() {
           </div>
 
           {/* Municipal Elections Banner Image */}
-          <div className="max-w-3xl mx-auto w-full">
+          <div
+            className={`max-w-3xl mx-auto w-full transition-all duration-500 ease-out ${
+              visibleElements.has("image")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}
+          >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/10 border border-black/5">
               <Image
                 src="https://ext.same-assets.com/3507938908/2508151001.jpeg"

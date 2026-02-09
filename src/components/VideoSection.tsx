@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
 const videos = [
   {
     id: "BW-m-zN-Ir4",
@@ -10,12 +14,58 @@ const videos = [
 ];
 
 export default function VideoSection() {
+  const [visibleVideos, setVisibleVideos] = useState<Set<number>>(new Set());
+  const videosRef = useRef<Map<number, HTMLElement>>(new Map());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const videoId = parseInt(
+              (entry.target as HTMLElement).getAttribute("data-video-id") || "0"
+            );
+            setVisibleVideos((prev) => new Set([...prev, videoId]));
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "100px 0px 0px 0px",
+      }
+    );
+
+    videosRef.current.forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => {
+      videosRef.current.forEach((element) => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+
   return (
     <section className="section-padding section-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,30,62,0.18),_transparent_45%)]" />
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Featured Video */}
-        <div className="max-w-4xl mx-auto mb-8">
+        <div
+          data-video-id={0}
+          ref={(el) => {
+            if (el) {
+              videosRef.current.set(0, el);
+            } else {
+              videosRef.current.delete(0);
+            }
+          }}
+          className={`max-w-4xl mx-auto mb-8 transition-all duration-500 ease-out ${
+            visibleVideos.has(0)
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <iframe
               src={`https://www.youtube.com/embed/${videos[0].id}`}
@@ -31,7 +81,24 @@ export default function VideoSection() {
         </div>
 
         {/* Secondary Video */}
-        <div className="max-w-4xl mx-auto">
+        <div
+          data-video-id={1}
+          ref={(el) => {
+            if (el) {
+              videosRef.current.set(1, el);
+            } else {
+              videosRef.current.delete(1);
+            }
+          }}
+          className={`max-w-4xl mx-auto transition-all duration-500 ease-out ${
+            visibleVideos.has(1)
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+          style={{
+            transitionDelay: visibleVideos.has(1) ? "100ms" : "0ms",
+          }}
+        >
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <iframe
               src={`https://www.youtube.com/embed/${videos[1].id}`}

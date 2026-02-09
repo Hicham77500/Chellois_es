@@ -201,12 +201,14 @@ export default function ChelloisEsPage() {
       }
     );
 
-    cardsRef.current.forEach((element) => {
+    const currentCards = cardsRef.current;
+
+    currentCards.forEach((element) => {
       observer.observe(element);
     });
 
     return () => {
-      cardsRef.current.forEach((element) => {
+      currentCards.forEach((element) => {
         observer.unobserve(element);
       });
     };
@@ -334,10 +336,10 @@ export default function ChelloisEsPage() {
                 className={`card p-6 bg-gradient-to-br from-campaign-light via-white to-white border-2 border-campaign-purple/30 shadow-md hover:shadow-lg hover:border-campaign-purple/60 overflow-hidden relative group transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-campaign-red focus-visible:ring-offset-2 ${
                   visibleCards.has(citizen.id)
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
+                    : "opacity-0 translate-y-4"
                 }`}
                 style={{
-                  transitionDuration: "500ms",
+                  transitionDuration: "700ms",
                   transitionDelay: visibleCards.has(citizen.id)
                     ? `${Array.from(visibleCards).indexOf(citizen.id) * 60}ms`
                     : "0ms",
