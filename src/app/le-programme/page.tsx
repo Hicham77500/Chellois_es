@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 const faqs = [
   {
@@ -190,6 +190,8 @@ export default function ProgrammePage() {
   const [expandedSections, setExpandedSections] = useState<{
     [key: string]: boolean;
   }>({});
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardsRef = useRef<Map<number, HTMLElement>>(new Map());
 
   const toggleSection = useCallback((categoryIndex: number) => {
     setExpandedSections((prev) => ({
@@ -208,6 +210,36 @@ export default function ProgrammePage() {
 
   const collapseAll = useCallback(() => {
     setExpandedSections({});
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = parseInt(
+              (entry.target as HTMLElement).getAttribute("data-section-id") ||
+                "0"
+            );
+            setVisibleCards((prev) => new Set([...prev, sectionId]));
+          }
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: "100px 0px 0px 0px",
+      }
+    );
+
+    cardsRef.current.forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => {
+      cardsRef.current.forEach((element) => {
+        observer.unobserve(element);
+      });
+    };
   }, []);
 
   const allExpanded = Object.keys(expandedSections).length === faqs.length;
@@ -296,11 +328,31 @@ export default function ProgrammePage() {
             {faqs.map((section, sectionIdx) => (
               <div
                 key={section.category}
-                className="card p-6 md:p-7 bg-white/90"
+                data-section-id={sectionIdx}
+                ref={(el) => {
+                  if (el) {
+                    cardsRef.current.set(sectionIdx, el);
+                  } else {
+                    cardsRef.current.delete(sectionIdx);
+                  }
+                }}
+                className={`card p-6 md:p-7 bg-gradient-to-br from-campaign-light via-white to-white border-2 border-campaign-purple/30 shadow-md hover:shadow-lg hover:border-campaign-purple/60 overflow-hidden relative group transition-all focus-within:ring-2 focus-within:ring-campaign-red focus-within:ring-offset-2 ${
+                  visibleCards.has(sectionIdx)
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{
+                  transitionDuration: "500ms",
+                  transitionDelay: visibleCards.has(sectionIdx)
+                    ? `${Array.from(visibleCards).indexOf(sectionIdx) * 60}ms`
+                    : "0ms",
+                }}
               >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-campaign-purple via-campaign-pink to-campaign-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <button
                   type="button"
                   onClick={() => toggleSection(sectionIdx)}
+                  aria-expanded={!!expandedSections[sectionIdx]}
                   className="w-full text-left"
                 >
                   <h3 className="text-xl md:text-2xl font-semibold text-campaign-dark flex items-center justify-between">
@@ -316,21 +368,19 @@ export default function ProgrammePage() {
                 </button>
 
                 {expandedSections[sectionIdx] && (
-                  <div className="space-y-3 mt-4">
+                  <div className="space-y-4 mt-4">
                     {section.items.map((item) => (
-                      <details
+                      <div
                         key={item.q}
-                        className="group rounded-xl border border-black/5 bg-white px-4 py-3 open"
-                        open
+                        className="rounded-xl border border-black/5 bg-white px-4 py-3"
                       >
-                        <summary className="cursor-pointer list-none font-semibold text-campaign-dark flex items-center justify-between">
-                          <span>{item.q}</span>
-                          <span className="text-campaign-red text-xl group-open:rotate-45 transition-transform">+</span>
-                        </summary>
-                        <p className="text-campaign-gray mt-3 leading-relaxed">
+                        <p className="font-semibold text-campaign-dark">
+                          {item.q}
+                        </p>
+                        <p className="text-campaign-gray mt-2 leading-relaxed">
                           {item.a}
                         </p>
-                      </details>
+                      </div>
                     ))}
                   </div>
                 )}
