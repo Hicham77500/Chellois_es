@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/le-programme", label: "Le programme" },
   { href: "/chelloises", label: "Chellois·es" },
   { href: "/actions", label: "Actions" },
-  { href: "/contacts", label: "Contacts" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
