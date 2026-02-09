@@ -34,11 +34,20 @@ export default function ContactPage() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // TODO: Implémenter l'envoi du formulaire vers l'API
-      console.log("Données du formulaire:", formData);
-      
-      // Simulation d'envoi
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Envoi du formulaire vers l'API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Erreur lors de l'envoi");
+      }
 
       setSubmitStatus({
         type: "success",
@@ -59,7 +68,9 @@ export default function ContactPage() {
       setSubmitStatus({
         type: "error",
         message:
-          "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
+          error instanceof Error
+            ? error.message
+            : "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
       });
     } finally {
       setIsSubmitting(false);
@@ -314,7 +325,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-sm text-white/80">contact@chelloises2026.fr</p>
+                <p className="text-sm text-white/80">contact@chellois-es2026.fr</p>
               </div>
 
               <div className="glass p-6 rounded-2xl text-center text-white">
