@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Chellois·es 2026 - Pour une ville de Chelles solidaire, citoyenne et écologique",
   description: "Liste insoumise et citoyenne pour les élections municipales de Chelles 2026. Découvrez notre programme et rejoignez-nous !",
   icons: {
-    icon: "https://ext.same-assets.com/3507938908/2194857454.ico",
+    icon: "/chellois-es/images/logo.ico",
   },
 };
 

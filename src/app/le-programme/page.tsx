@@ -244,37 +244,6 @@ export default function ProgrammePage() {
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elementId = (entry.target as HTMLElement).getAttribute(
-              "data-element-id"
-            );
-            if (elementId) {
-              setVisibleElements((prev) => new Set([...prev, elementId]));
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "100px 0px 0px 0px",
-      }
-    );
-
-    elementsRef.current.forEach((element) => {
-      observer.observe(element);
-    });
-
-    return () => {
-      elementsRef.current.forEach((element) => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
-
   const allExpanded = Object.keys(expandedSections).length === faqs.length;
   return (
     <main className="min-h-screen bg-campaign-light">
@@ -298,26 +267,10 @@ export default function ProgrammePage() {
         </div>
       </section>
 
-      <section 
-        className="section-padding section-light"
-        data-element-id="intro"
-        ref={(el) => {
-          if (el) {
-            elementsRef.current.set('intro', el);
-          } else {
-            elementsRef.current.delete('intro');
-          }
-        }}
-      >
+      <section className="section-padding section-light">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-            <div 
-              className={`space-y-4 text-campaign-gray text-lg leading-relaxed transition-all duration-500 ease-out ${
-                visibleElements.has('intro')
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-10"
-              }`}
-            >
+            <div className="space-y-4 text-campaign-gray text-lg leading-relaxed">
               <p>
                 « À Chelles, nous refusons l’idée qu’une ville doit se contenter
                 de gérer l’existant, alors qu’elle pourrait protéger, rassembler
@@ -343,16 +296,7 @@ export default function ProgrammePage() {
               </p>
             </div>
 
-            <div 
-              className={`card p-4 transition-all duration-500 ease-out ${
-                visibleElements.has('intro')
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-10"
-              }`}
-              style={{
-                transitionDelay: visibleElements.has('intro') ? "100ms" : "0ms",
-              }}
-            >
+            <div className="card p-4">
               <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <iframe
                   src="https://www.youtube.com/embed/25lLr3vUlws"

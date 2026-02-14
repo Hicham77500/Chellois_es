@@ -40,16 +40,6 @@ const citizens = [
     photo: getAssetPath("/images/Laetitia.png"),
   },
   {
-    id: 4,
-    name: "Raphaël TOSETTI",
-    role: "Enseignant en mathématiques, auteur de manuels scolaires",
-    summary:
-      "Enseignant depuis 27 ans en Seine-et-Marne, je veux remettre l'humain au cœur de la municipalité et préparer Chelles aux défis climatiques.",
-    vision:
-      "Raphaël TOSETTI, enseignant en mathématiques dans un lycée de Meaux et auteur de manuels scolaires. Chellois depuis deux ans, je me suis immédiatement senti bien dans une ville qui doit aussi bien relever des défis liés à sa proximité avec la capitale que des défis issus de son ancrage dans l’un des plus grands départements agricoles de France. Cette « rurbanité » est un atout qu’il faut cultiver et mettre en valeur.\n\nEnseignant depuis 27 ans en Seine-et-Marne, j’ai vécu la dégradation des services publics et l’appauvrissement des classes moyennes et ouvrières. J’ai pu mesurer combien la solidarité était une valeur à encourager. C’est ainsi que je me suis rapproché de la France Insoumise.\nJ’ai eu l’impression que professionnellement et même humainement, LFI était le seul mouvement politique à défendre mes intérêts. J’ai donc décidé de militer à ses côtés et de participer moi-même à ce combat démocratique. Étant de nature rigoureuse, j’ai apprécié la structure de ce mouvement articulé autour de militants, de chercheurs de l’institut La Boétie et de figures politiques incarnant mes idées.\n\nJe m’engage donc dans ces élections municipales avec la liste citoyenne et insoumise Chellois·es car je suis convaincu que le premier rempart face aux différentes crises existantes et à venir est la commune. Cette liste Chellois·es me représente autant par les idées qui l’ont fait naître que par la diversité qui la constitue.\nJe veux donc mettre ma force de travail au service de l’anticipation et préparer notre ville aux défis, en particulier climatiques, qui s’annoncent. Je veux également et irrémédiablement remettre l’essentiel au cœur des préoccupations de la municipalité : l’humain.",
-    photo: getAssetPath("/images/Raphael.png"),
-  },
-  {
     id: 5,
     name: "Safia TBAHRITI",
     role: "55 ans, assistante familiale",
@@ -299,7 +289,7 @@ export default function ChelloisEsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-campaign-dark">
-              15 citoyen·nes engagé·es
+              14 citoyen·nes engagé·es
             </h2>
             <p className="text-campaign-gray mt-3">
               Chaque personne peut être dépliée pour mettre en avant sa

@@ -38,7 +38,9 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const normalizedPathname = pathname.replace(/\/$/, '') || '/';
+              const normalizedHref = link.href.replace(/\/$/, '') || '/';
+              const isActive = normalizedPathname === normalizedHref;
               return (
                 <Link
                   key={link.href}
@@ -77,7 +79,9 @@ export default function Header() {
           <nav className="md:hidden mt-4 pb-4">
             <div className="flex flex-col gap-3 bg-campaign-dark/95 rounded-2xl p-4 border border-white/10 shadow-xl">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const normalizedPathname = pathname.replace(/\/$/, '') || '/';
+                const normalizedHref = link.href.replace(/\/$/, '') || '/';
+                const isActive = normalizedPathname === normalizedHref;
                 return (
                   <Link
                     key={link.href}
