@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
+import { getAssetPath } from "@/lib/basePath";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -34,19 +35,36 @@ export default function ContactPage() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Envoi du formulaire vers l'API
-      const response = await fetch("/api/contact", {
+      // ⚠️ REMPLACE "YOUR_ACCESS_KEY_HERE" par ta clé Web3Forms
+      // Obtiens-la sur : https://web3forms.com (gratuit)
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+      // Préparer les données pour Web3Forms
+      const web3FormsData = {
+        access_key: accessKey,
+        name: `${formData.prenom} ${formData.nom}`,
+        email: formData.email,
+        phone: formData.telephone,
+        subject: formData.sujet,
+        message: formData.message,
+        // Champs optionnels pour meilleure organisation
+        from_name: `${formData.prenom} ${formData.nom}`,
+        replyto: formData.email,
+      };
+
+      // Envoi vers Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(web3FormsData),
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Erreur lors de l'envoi");
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Erreur lors de l'envoi");
       }
 
       setSubmitStatus({
@@ -105,7 +123,7 @@ export default function ContactPage() {
             {/* Image */}
             <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/et_vous.png"
+                src={getAssetPath("/images/et_vous.png")}
                 alt="Et vous ?"
                 fill
                 className="object-cover"

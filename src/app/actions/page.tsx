@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/basePath";
 
 export default function ActionsPage() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
@@ -146,7 +147,7 @@ export default function ActionsPage() {
       title: "Meeting de lancement",
       description:
         "Le 18 décembre, venez participer au meeting de lancement de la liste insoumise et citoyenne Chellois·es ! Des invités surprises, de la musique et surtout un projet pour nous les chellois·es.\nVenez échanger avec nous, laissez vous convaincre et venez participer à cette belle aventure humaine !!!",
-      image: "/images/metting18dec.png",
+      image: getAssetPath("/images/metting18dec.png"),
       type: "event-image",
     },
     {
