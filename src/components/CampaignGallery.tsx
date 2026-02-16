@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { getAssetPath } from "@/lib/basePath";
 
 const campaignImages = [
   {
@@ -9,7 +10,7 @@ const campaignImages = [
     alt: "Céline De Kerpel - Liste insoumise et citoyenne",
   },
   {
-    src: "https://ext.same-assets.com/3507938908/282816735.jpeg",
+    src: getAssetPath("/images/metting_new.png"),
     alt: "Meeting de lancement - J-5",
   },
 ];
@@ -36,12 +37,14 @@ export default function CampaignGallery() {
       }
     );
 
-    imagesRef.current.forEach((element) => {
+    const currentImages = imagesRef.current;
+
+    currentImages.forEach((element) => {
       observer.observe(element);
     });
 
     return () => {
-      imagesRef.current.forEach((element) => {
+      currentImages.forEach((element) => {
         observer.unobserve(element);
       });
     };
