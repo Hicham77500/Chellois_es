@@ -35,9 +35,6 @@ export default function SoutiensPage() {
         <div className="container mx-auto px-4 h-full">
           <div className="max-w-6xl mx-auto flex flex-col gap-6">
             <div className="text-center md:text-left">
-              <p className="text-campaign-red font-semibold tracking-[0.3em] text-xs uppercase">
-                Soutiens
-              </p>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3">
                 Des voix qui comptent
               </h1>
@@ -47,14 +44,6 @@ export default function SoutiensPage() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-6 shadow-2xl">
-              <div className="flex flex-col gap-2">
-                <h2 className="text-white text-xl md:text-2xl font-semibold">
-                  Toutes les videos de soutien
-                </h2>
-                <p className="text-white/60 text-sm">
-                  Vision globale des messages de soutien.
-                </p>
-              </div>
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {supports.map((support) => (
