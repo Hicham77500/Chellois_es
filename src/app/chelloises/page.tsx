@@ -289,11 +289,10 @@ export default function ChelloisEsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-campaign-dark">
-              14 citoyen·nes engagé·es
+              45 candidat·es engage·es
             </h2>
             <p className="text-campaign-gray mt-3">
-              Chaque personne peut être dépliée pour mettre en avant sa
-              détermination, sa vision et son engagement.
+              Voici 15 portraits pour faire connaissance.
             </p>
           </div>
 

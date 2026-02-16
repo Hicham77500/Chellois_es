@@ -46,6 +46,17 @@ export default function RedBanner() {
               : "opacity-0 scale-95"
           }`}
         >
+          <div className="max-w-4xl mx-auto mb-6">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+              <iframe
+                src="https://www.youtube.com/embed/j5_0lWyzY0Q?rel=0"
+                title="Voeux de fin d'annee"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
             Bonne année 2026 !
           </h2>

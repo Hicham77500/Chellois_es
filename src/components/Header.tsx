@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/", label: "Accueil" },
   { href: "/le-programme", label: "Le programme" },
   { href: "/chelloises", label: "Chellois·es" },
+  { href: "/soutiens", label: "Soutiens" },
   { href: "/actions", label: "Actions" },
   { href: "/contact", label: "Contact" },
 ];
