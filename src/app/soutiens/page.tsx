@@ -7,21 +7,21 @@ const supports = [
   {
     id: "giraud",
     name: "David Giraud",
-    role: "Depute du Nord et candidat aux municipales a Roubaix",
+    role: "Députe du Nord et candidat aux municipales à Roubaix",
     embedId: "-4rwe8r1Gdk",
   },
   {
     id: "bompard",
     name: "Manuel Bompard",
     role:
-      "Depute des Bouches du Rhone, coordinateur national de la France Insoumise",
+      "Députe des Bouches du Rhone, coordinateur national de la France Insoumise",
     embedId: "xwgdmFjk6YI",
   },
   {
     id: "arnaud-julie",
     name: "Arnaud Saint-Martin et Julie Garnier",
     role:
-      "Depute de Seine-et-Marne et elue au conseil regional, candidate aux municipales a Moissy-Cramayel",
+      "Députe de Seine-et-Marne et élue au conseil regional, candidate aux municipales a Moissy-Cramayel",
     embedId: "rmQpTDKlEGE",
   },
 ];

@@ -45,8 +45,28 @@ const citizens = [
     role: "55 ans, assistante familiale",
     summary:
       "Chelloise depuis l'enfance, maman célibataire et assistante familiale. Mon métier m'a appris l'écoute et la responsabilité. Je crois en une ville qui place l'humain au cœur de ses priorités.",
-    vision:
-      "Safia TBAHRITI, 55 ans, habitante de Chelles depuis l’enfance, je suis profondément attachée à notre ville et à son évolution.\n\nMaman célibataire d’une enfant et assistante familiale, j’accompagne au quotidien des enfants qui ont besoin d’un cadre stable, sécurisant et bienveillant. Ce métier, que j’exerce avec engagement, m’a appris la patience, l’écoute, la responsabilité et la force du lien humain.\n\nJe souhaite contribuer, à mon niveau, à une ville plus solidaire, plus attentive aux besoins des familles, et plus à l’écoute de chaque habitant.\n\n* Vie locale : soutien aux familles, services de proximité, accompagnement des jeunes.\n* Environnement : espaces publics agréables, quartiers apaisés, ville où il fait bon vivre.\n* Cohésion humaine : renforcer les liens entre habitants, favoriser l’entraide, valoriser les parcours de chacun.\n\nIssue d’un parcours construit par le travail et l’engagement, je crois qu’une ville avance lorsqu’elle place l’humain au cœur de ses priorités.\n\nEnsemble, faisons de Chelles une ville qui protège, soutient et élève chacun d’entre nous.",
+    vision: `Présentation de Safia TBAHRITI, 55 ans
+
+  🏠 Je m’appelle Safia TBAHRITI. Chelles, c’est ma ville. J’y ai grandi, j’y ai construit ma vie, j’y ai vu passer les années, les visages, les histoires. Ici, chaque rue porte un souvenir, chaque quartier fait partie de mon histoire.
+
+  👩‍👧 Je suis maman célibataire d’un enfant, et surtout assistante familiale. Ce métier, je ne l’ai pas choisi par hasard. J’ai ouvert ma porte et mon cœur à des enfants blessés par la vie, des enfants qui avaient besoin d’un refuge, d’une présence, d’un regard qui ne juge pas. J’ai partagé leurs peines, leurs peurs, mais aussi leurs sourires, leurs progrès, leurs renaissances.
+
+  Ces enfants m’ont appris le courage. Ils m’ont appris que parfois, la seule chose qui peut changer une vie, c’est de se sentir aimé et protégé.
+
+  💔 Quand on accompagne les plus fragiles, on ne peut plus détourner le regard. On comprend que la solidarité n’est pas un mot, mais une responsabilité.
+
+  🌱 C’est pour cette raison que j’ai choisi de m’engager avec la Révolution Écologique pour le Vivant, portée par Aymeric Caron, et aux côtés de La France insoumise. Parce que je crois profondément que la politique doit protéger, soutenir et respecter le vivant, et qu’elle doit d’abord servir les êtres humains.
+
+  🤝 Je ne suis pas une professionnelle de la politique. Je suis une femme de terrain. Une mère. Une assistante familiale. Une habitante de Chelles. Je connais les difficultés, les inquiétudes, mais aussi les espoirs des familles.
+
+  🌅 Je m’engage pour que notre ville reste humaine.
+  Pour que chaque enfant se sente en sécurité.
+  Pour que chaque famille se sente soutenue.
+  Pour que personne ne se sente invisible.
+
+  💫 Je veux être une voix sincère. Une voix qui vient du cœur. Une voix qui vous ressemble.
+
+  💪 Parce que Chelles n’est pas seulement une ville. C’est notre maison. Et une maison, on en prend soin.`,
     photo: getAssetPath("/images/Safia.png"),
   },
   {
@@ -97,9 +117,27 @@ const citizens = [
     role: "48 ans, chauffeur routier et délégué syndical",
     summary:
       "Père de quatre enfants, chauffeur routier et délégué syndical depuis 25 ans. Je défends des conditions de travail justes et l'intérêt de tous les Chellois.",
-    vision:
-      "Belbouab SALAHDINE — 48 ans.\nMarié et père de quatre enfants.\nRésidant à Chelles depuis 10 ans.\nPropriétaire et installé durablement dans la commune.\n\nChauffeur routier depuis 25 ans et délégué syndical, j’ai acquis une solide expérience du monde du travail, du transport et du syndicalisme. Depuis toujours, je m’engage à représenter équitablement chaque salarié, à porter leur voix avec conviction et à défendre des conditions de travail justes et respectueuses. Ma mission repose sur le dialogue, la transparence et la détermination à faire progresser les droits de toutes et tous.\n\nCette expérience m’a naturellement donné envie de m’investir davantage pour ma ville. C’est pourquoi j’ai choisi de rejoindre la liste de La France insoumise pour les élections municipales de Chelles, avec force et détermination. Aujourd’hui, je souhaite mettre mon écoute, mon engagement et ma volonté d’agir au service de tous les Chellois et Chelloises.\n\nJe partage avec vous un attachement profond à notre commune, à son histoire, à sa diversité et à son potentiel. Chelles mérite un projet clair, réaliste et tourné vers l’humain. Une ville où chacun trouve sa place, où la solidarité n’est pas un slogan mais une réalité, et où les décisions publiques sont prises dans l’intérêt de tous.\n\nJe me suis engagé dans cette liste pour une raison simple : La France insoumise porte une vision cohérente, ambitieuse et profondément humaine pour répondre aux défis actuels. Ses valeurs mettent l’intérêt collectif au cœur de l’action publique et ouvrent la voie à une transition sociale, écologique et démocratique dont notre ville a besoin.\n\nJe souhaite contribuer à construire une ville plus juste, plus solidaire et plus agréable à vivre pour nos enfants comme pour les générations futures. Ensemble, avançons vers un avenir qui ressemble à nos valeurs.\n\n« Le véritable vainqueur d’une élection est celui que le peuple n’oublie pas après. »",
-    quote: "Le véritable vainqueur d'une élection est celui que le peuple n'oublie pas après.",
+    vision: `Belbouab Salahdine — 48 ans
+Marié, père de quatre enfants
+Résident à Chelles depuis 10 ans
+Propriétaire, installé durablement dans notre commune
+
+Chauffeur routier depuis 25 ans et délégué syndical, j'ai construit mon engagement au cœur du monde du travail. Cette expérience m'a appris l'importance de l'écoute, du dialogue et de la détermination pour défendre des conditions de travail justes et dignes. Depuis toujours, je m'engage à représenter chaque salarié avec équité et à porter leur voix avec conviction.
+
+Cet engagement m'a naturellement conduit à vouloir agir davantage pour ma ville. L'inspiration et le courage politique de Aymeric Caron, à travers la Révolution Écologique pour le Vivant (REV), ont renforcé ma conviction qu'il est possible de faire de la politique autrement : en plaçant le vivant, la justice sociale et l'intérêt général au cœur des décisions.
+
+C'est pourquoi j'ai choisi de rejoindre avec la REV la liste de la La France insoumise pour les élections municipales de Chelles, avec force et détermination. Ces engagements portent une vision cohérente, ambitieuse et profondément humaine pour répondre aux défis sociaux, écologiques et démocratiques auxquels nous faisons face.
+
+Je partage avec vous un attachement sincère à notre commune, à son histoire, à sa diversité et à son potentiel. Chelles mérite un projet clair et réaliste, tourné vers l'humain :
+une ville où chacun trouve sa place,
+où la solidarité est concrète,
+où les décisions publiques sont prises dans l'intérêt de tous.
+
+La REV défend une écologie exigeante, la protection des animaux, une meilleure répartition des richesses et une démocratie plus transparente. Elle porte l'idée simple mais essentielle que le progrès ne doit plus se faire au détriment de la nature ni des plus fragiles, mais au service du bien commun.
+
+Cette vision rejoint mes convictions profondes : construire une ville plus juste, plus solidaire et plus agréable à vivre, pour nos enfants et pour les générations futures.
+
+Ensemble, construisons un avenir qui respecte nos valeurs et protège ce que nous avons de plus précieux.`,
     photo: getAssetPath("/images/Salahdine.png"),
   },
   {
