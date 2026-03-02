@@ -17,6 +17,7 @@ export default function ActionsPage() {
 
   // Calendar state - dynamique based on current date
   const today = new Date();
+  today.setHours(0, 0, 0, 0); // Reset time to start of day for accurate comparison
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth();
   const currentDay = today.getDate();
@@ -42,6 +43,25 @@ export default function ActionsPage() {
   // Format date display
   const dayNames = ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"];
   const todayString = `${dayNames[today.getDay()]}. ${currentDay} ${monthShort}`;
+
+  // Helper function to get month number from French month abbreviation
+  const getMonthNumber = (monthAbbr: string): number => {
+    const monthMap: { [key: string]: number } = {
+      "jan": 0, "janv": 0, "janvier": 0,
+      "fév": 1, "février": 1,
+      "mar": 2, "mars": 2, "march": 2,
+      "avr": 3, "avril": 3,
+      "mai": 4,
+      "juin": 5,
+      "juil": 6, "juillet": 6,
+      "août": 7,
+      "sep": 8, "sept": 8, "septembre": 8,
+      "oct": 9, "octobre": 9,
+      "nov": 10, "novembre": 10,
+      "déc": 11, "décembre": 11,
+    };
+    return monthMap[monthAbbr.toLowerCase()] ?? 0;
+  };
 
 
   useEffect(() => {
@@ -166,69 +186,149 @@ export default function ActionsPage() {
   // Upcoming events
   const upcomingEvents = [
     {
-      id: "upcoming-23feb",
-      date: "Lundi 23 février 2026",
-      month: "fév",
-      day: 23,
+      id: "upcoming-02mar",
+      date: "Lundi 02 mars 2026",
+      month: "mars",
+      day: 2,
       title: "Tractage à la gare",
-      description: "Lundi 23/02 de 16h30 à 18h30 - tractage à la gare",
+      description: "Lundi 02/03 à 17h - Tractage à la gare",
       type: "event-text",
-      calendarDay: 23,
+      calendarDay: 2,
     },
     {
-      id: "upcoming-24feb",
-      date: "Mardi 24 février 2026",
-      month: "fév",
-      day: 24,
-      title: "Déambulation aux Coudreaux",
-      description:
-        "Mardi 24/02 à 15h30 - déambulation dans les Coudreaux pour aller à la rencontre des commerçants",
+      id: "upcoming-03mar",
+      date: "Mardi 03 mars 2026",
+      month: "mars",
+      day: 3,
+      title: "Rencontre commerçants Foch",
+      description: "Mardi 03/03 à 15h30 - commerçants Foch",
       type: "event-text",
-      calendarDay: 24,
+      calendarDay: 3,
     },
     {
-      id: "upcoming-25feb",
-      date: "Mercredi 25 février 2026",
-      month: "fév",
-      day: 25,
-      title: "Foyer Flamant",
-      description: "Mercredi 25/02 à 10h30 - foyer Flamant",
+      id: "upcoming-04mar",
+      date: "Mercredi 04 mars 2026",
+      month: "mars",
+      day: 4,
+      title: "Rencontre commerçants Gambetta",
+      description: "Mercredi 04/03 à 15h30 - commerçants Gambetta",
       type: "event-text",
-      calendarDay: 25,
+      calendarDay: 4,
     },
     {
-      id: "upcoming-26feb",
-      date: "Jeudi 26 février 2026",
-      month: "fév",
-      day: 26,
-      title: "Déambulation Résistance et Gambetta",
-      description:
-        "Jeudi 26/02 à 15h30 - déambulation Résistance et Gambetta pour aller rencontrer les commerçants",
+      id: "upcoming-05mar",
+      date: "Jeudi 05 mars 2026",
+      month: "mars",
+      day: 5,
+      title: "Pôle emploi",
+      description: "Jeudi 05/03 à 9h - pôle emploi",
       type: "event-text",
-      calendarDay: 26,
+      calendarDay: 5,
     },
     {
-      id: "upcoming-27feb",
-      date: "Vendredi 27 février 2026",
-      month: "fév",
-      day: 27,
-      title: "Tractage à la gare",
-      description: "Vendredi 27/02 de 16h30 à 18h30 - tractage à la gare",
+      id: "upcoming-06mar",
+      date: "Vendredi 06 mars 2026",
+      month: "mars",
+      day: 6,
+      title: "Rencontre exploitants Mont Guichet",
+      description: "Vendredi 06/03 à 10h30 - rencontre exploitants Mont Guichet",
       type: "event-text",
-      calendarDay: 27,
+      calendarDay: 6,
     },
     {
-      id: "upcoming-28feb",
-      date: "Samedi 28 février 2026",
-      month: "fév",
-      day: 28,
-      title: "Parc du Souvenir",
-      description:
-        "Samedi 28/02 à 15h - parc du Souvenir pour rencontrer les gens qui s'y promènent (manège, parc...)",
+      id: "upcoming-07mar-1",
+      date: "Samedi 07 mars 2026",
+      month: "mars",
+      day: 7,
+      title: "Porte à porte Illette",
+      description: "Samedi 07/03 à 14h - gros porte à porte Illette",
       type: "event-text",
-      calendarDay: 28,
+      calendarDay: 7,
+    },
+    {
+      id: "upcoming-07mar-2",
+      date: "Samedi 07 mars 2026",
+      month: "mars",
+      day: 7,
+      title: "Fiesta vélo place Cala",
+      description: "Samedi 07/03 à 18h - Fiesta vélo place Cala",
+      type: "event-text",
+      calendarDay: 7,
+    },
+    {
+      id: "upcoming-08mar-1",
+      date: "Dimanche 08 mars 2026",
+      month: "mars",
+      day: 8,
+      title: "Marche féministe",
+      description: "Dimanche 08/03 à 10h30 - marche féministe, départ centre culturel",
+      type: "event-text",
+      calendarDay: 8,
+    },
+    {
+      id: "upcoming-08mar-2",
+      date: "Dimanche 08 mars 2026",
+      month: "mars",
+      day: 8,
+      title: "Marche féministe parisienne",
+      description: "Dimanche 08/03 à 14h - marche féministe parisienne, départ place Gambetta",
+      type: "event-text",
+      calendarDay: 8,
     },
   ];
+
+  // Filter upcoming events to only show those in the future
+  const futureEvents = upcomingEvents.filter((event) => {
+    if (event.day === 0) return false; // Skip events without specific dates
+    const eventMonth = getMonthNumber(event.month);
+    const eventDate = new Date(currentYear, eventMonth, event.calendarDay);
+    eventDate.setHours(0, 0, 0, 0); // Reset time for comparison
+    return eventDate >= today;
+  });
+
+  // Group events by day and sort chronologically
+  const groupEventsByDay = () => {
+    const grouped = new Map<number, typeof futureEvents>();
+    
+    futureEvents.forEach((event) => {
+      const day = event.calendarDay;
+      if (!grouped.has(day)) {
+        grouped.set(day, []);
+      }
+      grouped.get(day)!.push(event);
+    });
+
+    // Convert to array and sort by day
+    return Array.from(grouped.entries())
+      .sort((a, b) => a[0] - b[0])
+      .map(([day, events]) => ({
+        day,
+        events: events.sort((a, b) => {
+          // Sort events within a day by time if mentioned, otherwise keep order
+          const timeA = a.description.match(/\d{1,2}h\d{0,2}/)?.[0] || "23:59";
+          const timeB = b.description.match(/\d{1,2}h\d{0,2}/)?.[0] || "23:59";
+          return timeA.localeCompare(timeB);
+        }),
+      }));
+  };
+
+  const groupedEvents = groupEventsByDay();
+
+  // Check if current week is passed
+  const currentWeekStart = new Date(today);
+  currentWeekStart.setDate(today.getDate() - today.getDay() + 1); // Monday of current week
+  const currentWeekEnd = new Date(currentWeekStart);
+  currentWeekEnd.setDate(currentWeekStart.getDate() + 6); // Sunday of current week
+  
+  const hasEventsThisWeek = upcomingEvents.some((event) => {
+    if (event.day === 0) return false;
+    const eventMonth = getMonthNumber(event.month);
+    const eventDate = new Date(currentYear, eventMonth, event.calendarDay);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= currentWeekStart && eventDate <= currentWeekEnd;
+  });
+
+  const hasAnyFutureEvents = futureEvents.length > 0;
 
   return (
     <>
@@ -292,16 +392,16 @@ export default function ActionsPage() {
 
                       const day = dayNumber;
                       const isToday = day === currentDay;
-                      const eventOnDay = upcomingEvents.find((e) => e.calendarDay === day) || null;
-                      const hasEvent = !!eventOnDay;
+                      const daysWithEvents = new Set(groupedEvents.map((g) => g.day));
+                      const hasEvent = daysWithEvents.has(day);
 
                       return (
                         <button
                           key={day}
                           onClick={() => {
-                            if (hasEvent && eventOnDay) {
+                            if (hasEvent) {
                               setSelectedDate(day);
-                              setExpandedEventId(eventOnDay.id);
+                              setExpandedEventId(`day-${day}`);
                             }
                           }}
                           className={`p-2 rounded text-sm font-semibold transition-all transform hover:scale-110 ${
@@ -344,54 +444,90 @@ export default function ActionsPage() {
                   Événements à venir
                 </h2>
 
+                {/* Message when no more events this week */}
+                {!hasAnyFutureEvents && (
+                  <div className="mb-12 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-campaign-red/10 to-campaign-red/5 border-l-4 border-campaign-red">
+                    <h3 className="text-xl md:text-2xl font-bold text-campaign-dark mb-2">
+                      ✨ Nouvelles actions à venir
+                    </h3>
+                    <p className="text-campaign-gray text-base md:text-lg leading-relaxed">
+                      Merci pour votre engagement ! De nouvelles actions arrivent très bientôt.<br />
+                      <span className="font-semibold text-campaign-red">Restez à l'écoute pour connaître le calendrier des prochaines mobilisations.</span>
+                    </p>
+                  </div>
+                )}
+
                 {/* Timeline Container with continuous line */}
-                <div className="relative pl-8">
-                  {/* Continuous vertical line */}
-                  <div className="absolute left-3 top-2 bottom-0 w-0.5 bg-gradient-to-b from-campaign-red via-campaign-red to-transparent" />
+                {hasAnyFutureEvents && (
+                  <div className="relative pl-8">
+                    {/* Continuous vertical line */}
+                    <div className="absolute left-3 top-2 bottom-0 w-0.5 bg-gradient-to-b from-campaign-red via-campaign-red to-transparent" />
 
-                  {upcomingEvents.map((event, index) => (
-                    <div
-                      key={event.id}
-                      {...getSectionElements(event.id)}
-                      className={`${getSectionElements(event.id).className} mb-12`}
-                      style={{
-                        transitionDelay: `${index * 100}ms`,
-                      }}
-                    >
-                      {/* Event Card with connected dot */}
-                      <div className="relative group" ref={getEventRef(event.id)}>
-                        {/* Timeline dot - subtle and minimal */}
-                        <div className="absolute -left-[26px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-campaign-red shadow-md group-hover:scale-150 group-hover:shadow-lg transition-all duration-300" />
+                    {groupedEvents.map((dayGroup, index) => {
+                      const firstEvent = dayGroup.events[0];
+                      const hasMultipleEvents = dayGroup.events.length > 1;
 
-                        {/* Event Content */}
-                        <div className={`rounded-2xl shadow-xl shadow-black/5 bg-white p-6 md:p-8 transition-all duration-300 ${
-                          selectedDate === event.calendarDay
-                            ? "border-2 border-campaign-red shadow-xl shadow-campaign-red/30 bg-campaign-red/5"
-                            : "border border-black/5 hover:shadow-lg"
-                        }`}>
-                          {/* Compact date pill */}
-                          <div className="flex items-center gap-3 mb-4">
-                            <span className="text-xs font-bold text-campaign-red uppercase tracking-wide">
-                              {event.month}
-                            </span>
-                            <span className="text-2xl font-light text-campaign-red">
-                              {event.day}
-                            </span>
-                            <div className="h-0.5 flex-1 bg-campaign-red/10" />
+                      return (
+                        <div
+                          key={`day-${dayGroup.day}`}
+                          {...getSectionElements(`day-${dayGroup.day}`)}
+                          className={`${getSectionElements(`day-${dayGroup.day}`).className} mb-12`}
+                          style={{
+                            transitionDelay: `${index * 100}ms`,
+                          }}
+                        >
+                          {/* Event Card with connected dot */}
+                          <div className="relative group" ref={getEventRef(`day-${dayGroup.day}`)}>
+                            {/* Timeline dot - subtle and minimal */}
+                            <div className="absolute -left-[26px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-campaign-red shadow-md group-hover:scale-150 group-hover:shadow-lg transition-all duration-300" />
+
+                            {/* Event Content */}
+                            <div className={`rounded-2xl shadow-xl shadow-black/5 bg-white p-6 md:p-8 transition-all duration-300 ${
+                              selectedDate === dayGroup.day
+                                ? "border-2 border-campaign-red shadow-xl shadow-campaign-red/30 bg-campaign-red/5"
+                                : "border border-black/5 hover:shadow-lg"
+                            }`}>
+                              {/* Compact date pill */}
+                              <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-bold text-campaign-red uppercase tracking-wide">
+                                  {firstEvent.month}
+                                </span>
+                                <span className="text-2xl font-light text-campaign-red">
+                                  {dayGroup.day}
+                                </span>
+                                {hasMultipleEvents && (
+                                  <span className="ml-auto text-xs font-semibold text-campaign-red bg-campaign-red/10 px-2 py-1 rounded-full">
+                                    {dayGroup.events.length} événements
+                                  </span>
+                                )}
+                                <div className="h-0.5 flex-1 bg-campaign-red/10" />
+                              </div>
+
+                              {/* Events list for this day */}
+                              <div className="space-y-4">
+                                {dayGroup.events.map((event, eventIndex) => (
+                                  <div
+                                    key={event.id}
+                                    className={`${
+                                      eventIndex > 0 ? "pt-4 border-t border-campaign-red/10" : ""
+                                    }`}
+                                  >
+                                    <h3 className="text-lg md:text-xl font-semibold text-campaign-dark mb-2">
+                                      {event.title}
+                                    </h3>
+                                    <p className="text-campaign-gray text-sm md:text-base leading-relaxed">
+                                      {event.description}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           </div>
-
-                          <h3 className="text-lg md:text-xl font-semibold text-campaign-dark mb-2">
-                            {event.title}
-                          </h3>
-
-                          <p className="text-campaign-gray text-sm md:text-base leading-relaxed">
-                            {event.description}
-                          </p>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               {/* Transition section */}
