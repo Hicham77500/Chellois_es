@@ -213,6 +213,10 @@ export default function ChelloisEsPage() {
   }, []);
 
   useEffect(() => {
+    const revealAllFallback = window.setTimeout(() => {
+      setVisibleCards(new Set(citizens.map((citizen) => citizen.id)));
+    }, 1500);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -237,9 +241,11 @@ export default function ChelloisEsPage() {
     });
 
     return () => {
+      window.clearTimeout(revealAllFallback);
       currentCards.forEach((element) => {
         observer.unobserve(element);
       });
+      observer.disconnect();
     };
   }, []);
 
@@ -329,8 +335,53 @@ export default function ChelloisEsPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-campaign-dark">
               45 candidat·es engage·es
             </h2>
-            <p className="text-campaign-gray mt-3">
-              Voici 15 portraits pour faire connaissance.
+          </div>
+
+          <div className="mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() =>
+                  openImageModal(
+                    getAssetPath("/images/Trombinoscop_1.png"),
+                    "",
+                    ""
+                  )
+                }
+                className="relative rounded-2xl overflow-hidden shadow-lg bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-campaign-red focus-visible:ring-offset-2"
+                aria-label="Voir le trombinoscope visuel 1 en grand"
+              >
+                <Image
+                  src={getAssetPath("/images/Trombinoscop_1.png")}
+                  alt="Trombinoscope Chellois·es - visuel 1"
+                  width={900}
+                  height={600}
+                  className="w-full h-auto object-cover transition-transform duration-300 hover:scale-[1.02]"
+                />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  openImageModal(
+                    getAssetPath("/images/Trombinoscop_2.png"),
+                    "",
+                    ""
+                  )
+                }
+                className="relative rounded-2xl overflow-hidden shadow-lg bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-campaign-red focus-visible:ring-offset-2"
+                aria-label="Voir le trombinoscope visuel 2 en grand"
+              >
+                <Image
+                  src={getAssetPath("/images/Trombinoscop_2.png")}
+                  alt="Trombinoscope Chellois·es - visuel 2"
+                  width={900}
+                  height={600}
+                  className="w-full h-auto object-cover transition-transform duration-300 hover:scale-[1.02]"
+                />
+              </button>
+            </div>
+            <p className="text-campaign-dark font-semibold text-lg sm:text-xl mt-6">
+              Voici 15 portraits pour faire connaissance
             </p>
           </div>
 
@@ -438,14 +489,20 @@ export default function ChelloisEsPage() {
                   priority
                 />
               </div>
-              <div className="px-5 py-4 border-t border-black/10 overflow-y-auto">
-                <p className="text-campaign-dark text-base sm:text-lg font-semibold">
-                  {enlargedImage.name}
-                </p>
-                <div className="mt-2">
-                  {renderDescription(enlargedImage.description)}
+              {(enlargedImage.name || enlargedImage.description) && (
+                <div className="px-5 py-4 border-t border-black/10 overflow-y-auto">
+                  {enlargedImage.name && (
+                    <p className="text-campaign-dark text-base sm:text-lg font-semibold">
+                      {enlargedImage.name}
+                    </p>
+                  )}
+                  {enlargedImage.description && (
+                    <div className={enlargedImage.name ? "mt-2" : ""}>
+                      {renderDescription(enlargedImage.description)}
+                    </div>
+                  )}
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
