@@ -85,7 +85,7 @@ export default function Welcome() {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/10 border border-black/5">
               <Image
-                src={getAssetPath("/images/welcome_faces.jpg")}
+                src={getAssetPath("/images/metting18dec.png")}
                 alt="Élections Municipales 2026 - La France Insoumise"
                 width={800}
                 height={500}
