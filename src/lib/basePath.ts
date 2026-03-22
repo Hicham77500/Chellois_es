@@ -1,4 +1,4 @@
 export const getAssetPath = (path: string): string => {
-  const basePath = '/Chellois_es';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/chellois-es';
   return `${basePath}${path}`;
 };

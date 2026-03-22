@@ -2,7 +2,7 @@
 const nextConfig = {
   // Configuration pour export statique (hébergement sans Node.js)
   output: 'export',
-  basePath: '/Chellois_es',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/chellois-es',
   trailingSlash: true,
   
   allowedDevOrigins: ["*.preview.same-app.com"],
