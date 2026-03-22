@@ -10,7 +10,7 @@ const campaignImages = [
     alt: "Meeting de lancement - J-5",
   },
   {
-    src: getAssetPath("/images/Celine.png"),
+    src: getAssetPath("/images/metting18dec.png"),
     alt: "Céline De Kerpel - Liste insoumise et citoyenne",
   },
 ];
