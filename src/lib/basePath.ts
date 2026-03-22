@@ -1,4 +1,4 @@
 export const getAssetPath = (path: string): string => {
-  const basePath = '/chellois-es';
+  const basePath = '/Chellois_es';
   return `${basePath}${path}`;
 };
