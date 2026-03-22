@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { getAssetPath } from "@/lib/basePath";
 
 type WelcomeElement = "text" | "image";
 
@@ -84,7 +85,7 @@ export default function Welcome() {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-black/10 border border-black/5">
               <Image
-                src="https://ext.same-assets.com/3507938908/2508151001.jpeg"
+                src={getAssetPath("/images/welcome_faces.jpg")}
                 alt="Élections Municipales 2026 - La France Insoumise"
                 width={800}
                 height={500}

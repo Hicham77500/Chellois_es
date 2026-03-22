@@ -6,7 +6,7 @@ import { getAssetPath } from "@/lib/basePath";
 
 const campaignImages = [
   {
-    src: "https://ext.same-assets.com/3507938908/1970646336.jpeg",
+    src: getAssetPath("/images/gallery_faces.jpg"),
     alt: "Céline De Kerpel - Liste insoumise et citoyenne",
   },
   {
