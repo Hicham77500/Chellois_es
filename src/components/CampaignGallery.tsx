@@ -11,7 +11,7 @@ const campaignImages = [
   },
   {
     src: getAssetPath("/images/metting18dec.png"),
-    alt: "Céline De Kerpel - Liste insoumise et citoyenne",
+    alt: "Candidate 1 - Liste insoumise et citoyenne",
   },
 ];
 
