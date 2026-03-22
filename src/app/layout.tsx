@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import Script from "next/script";
+import ShowcaseBanner from "@/components/ShowcaseBanner";
 
 export const metadata: Metadata = {
   title: "Chellois·es 2026 - Pour une ville de Chelles solidaire, citoyenne et écologique",
@@ -25,7 +26,10 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className="antialiased">
-        <ClientBody>{children}</ClientBody>
+        <ClientBody>
+          {children}
+          <ShowcaseBanner />
+        </ClientBody>
       </body>
     </html>
   );

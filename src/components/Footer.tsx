@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const socialLinks = [
   {
-    href: "https://x.com/chellois_es2026?s=21",
+    href: "#",
     label: "Twitter/X",
     icon: (
       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -14,7 +14,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://www.facebook.com/share/1AQqmbTURf/",
+    href: "#",
     label: "Facebook",
     icon: (
       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://www.instagram.com/chellois_es2026?igsh=Y3BoODhnZzBvd2Y5",
+    href: "#",
     label: "Instagram",
     icon: (
       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <Link
-                  key={social.href}
+                  key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -81,11 +81,12 @@ export default function Footer() {
                 <button
                   type="button"
                   onClick={() =>
-                    copyToClipboard("contact@chellois-es2026.fr", "Courriel")
+                    copyToClipboard("contact@exemple-campagne.fr", "Courriel")
                   }
                   className="inline-flex items-center text-sm text-white/80 hover:text-white transition-colors duration-300 border border-white/20 rounded-full px-3 py-1 hover:border-white/50"
+                  title="Contact désactivé (Vitrine)"
                 >
-                  contact@chellois-es2026.fr
+                  contact@exemple-campagne.fr
                 </button>
               </div>
               <div className="mt-4">
@@ -129,7 +130,7 @@ export default function Footer() {
                 href="/"
                 className="hover:text-white transition-colors duration-300"
               >
-                chellois-es2026.fr
+                Campagne Exemple
               </Link>
             </p>
           </div>

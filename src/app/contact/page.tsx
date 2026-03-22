@@ -52,25 +52,13 @@ export default function ContactPage() {
         replyto: formData.email,
       };
 
-      // Envoi vers Web3Forms
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(web3FormsData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Erreur lors de l'envoi");
-      }
+      // Simulation pour la vitrine - Formulaire désactivé
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
       setSubmitStatus({
         type: "success",
         message:
-          "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.",
+          "Ceci est une vitrine de démonstration. Le formulaire est désactivé.",
       });
 
       // Réinitialiser le formulaire
@@ -343,7 +331,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-sm text-white/80">contact@chellois-es2026.fr</p>
+                <p className="text-sm text-white/80">contact@exemple-campagne.fr</p>
               </div>
 
               <div className="glass p-6 rounded-2xl text-center text-white">
@@ -389,7 +377,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-semibold mb-2">Réseaux sociaux</h3>
-                <p className="text-sm text-white/80">@Chelloises2026</p>
+                <p className="text-sm text-white/80">@ExempleCampagne</p>
               </div>
             </div>
           </div>
